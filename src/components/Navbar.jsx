@@ -20,14 +20,15 @@ const Navbar = ({ isAuth, setIsAuth }) => {
           Home
         </NavLink>
 
-        <NavLink to="/createpost">CreatePost</NavLink>
-
         {!isAuth ? (
           <NavLink to="/login">Login</NavLink>
         ) : (
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
+          <>
+            <NavLink to="/createpost">CreatePost</NavLink>
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
         )}
       </nav>
       <Outlet />

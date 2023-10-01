@@ -7,7 +7,7 @@ import PageLayout from "./components/PageLayout";
 import { useState } from "react";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <div>
@@ -16,9 +16,9 @@ function App() {
           path="/"
           element={<PageLayout setIsAuth={setIsAuth} isAuth={isAuth} />}
         >
-          <Route index element={<Home />} />
+          <Route index element={<Home isAuth={isAuth} />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
-          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />
